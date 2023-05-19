@@ -18,6 +18,8 @@ function App() {
       setEnterPressed(false)
       if (state.length < 6 && isAlphabetical && key.length === 1) {
         return [...state, e.key]
+      } if (key === 'Backspace' && state.length > 0) {
+        return state.filter((_item, idx) => idx !== state.length - 1)
       } else {
         return state
       }
