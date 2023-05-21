@@ -34,9 +34,11 @@ function App() {
 
 
   useEffect(() => {
-    if (enterPressed === true) {
+    if (enterPressed === true && currentEntryState.length === 5) {
       setEntriesCollectionState(state => [...state, currentEntryState])
       setCurrentEntryState([])
+    } else if(enterPressed && currentEntryState.length !== 5) {
+      alert('Must type five letter word')
     }
   }, [enterPressed])
 
@@ -78,7 +80,6 @@ function TextBoard({ entriesCollection, currentEntry, enterPressed }: { entriesC
 
   const findDuplicates = (arr: Entry) => arr.filter((item, index) => arr.indexOf(item) !== index)
 
-
   function bgCalculator(str: string, idx: number) {
     if (correctWord.includes(str) && correctWord.indexOf(str) === idx) {
       return 'bg-green-500'
@@ -106,7 +107,7 @@ function TextBoard({ entriesCollection, currentEntry, enterPressed }: { entriesC
                   </span>
                 )}
                 {entriesCollection.length === idx && currentEntry[idx2] && (
-                  <span className={`h-full w-full flex justify-center items-center ${enterPressed && bgCalculator(currentEntry[idx2], idx2)}`}>
+                  <span className={`h-full w-full flex justify-center items-center ${enterPressed && currentEntry.length > 0 && entriesCollection.lengt > 0 && bgCalculator(currentEntry[idx2], idx2)}`}>
                     {currentEntry[idx2].toUpperCase()}
                   </span>
                 )}
