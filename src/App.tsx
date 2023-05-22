@@ -3,10 +3,9 @@ const firstLine = 'qwertyuiop'.split('')
 const secondLine = 'asdfhjkl'.split('')
 const thirdLine = 'zxcvbnm'.split('')
 
-
 type Entry = string[]
-type DuplicateIndeces = number[]
 type EntriesCollecton = Array<Entry>
+type Index = Record<string, number[]>
 
 function App() {
   const [currentEntryState, setCurrentEntryState] = useState<Entry>([])
@@ -115,9 +114,9 @@ function TextBoard({ entriesCollection, currentEntry }: { entriesCollection: Ent
   }, [entriesCollection, correctWord])
 
   const findDuplicates = (arr: Entry) => arr.filter((item, index) => arr.indexOf(item) !== index)
-  function findDuplicateIndices(letters: Entry) {
+  function findDuplicateIndices(letters: Entry): Index {
     const duplicateLetters = findDuplicates(letters)
-    const obj = {}
+    const obj: Index = {}
 
     letters.forEach((item, idx) => {
       if (duplicateLetters.includes(item)) {
@@ -194,12 +193,12 @@ function TextBoard({ entriesCollection, currentEntry }: { entriesCollection: Ent
           )
         })}
       </div>
-      <Keyboard  />
+      <Keyboard />
     </>
   )
 }
 
-function Keyboard({  }) {
+function Keyboard({ }) {
   return (
     <div className='w-full flex justify-center items-center'>
       <div className='flex flex-col gap-10 items-center'>
