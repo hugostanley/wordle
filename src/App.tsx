@@ -38,7 +38,6 @@ function App() {
 
 
   useEffect(() => {
-    console.log(currentEntryState.length)
     if (enterPressed === true && currentEntryState.length === 5) {
       setEntriesCollectionState(state => [...state, currentEntryState])
       setCurrentEntryState([])
@@ -176,7 +175,7 @@ function TextBoard({ entriesCollection, currentEntry }: { entriesCollection: Ent
           return (
             <div className='flex' key={idx}>
               {wordArr.map((_item2, idx2) => (
-                <div key={idx2} className={`m-1 h-16 font-bold text-xl w-16 border-[2px] border-graynew`}>
+                <div key={idx2} className={`m-1 h-12 font-bold text-xl w-12 border-[2px] border-graynew`}>
                   {entriesCollection[idx] && entriesCollection[idx][idx2] && (
                     <span className={`h-full w-full flex justify-center items-center ${bgCalculator()[idx][idx2]}`}>
                       {entriesCollection[idx][idx2].toUpperCase()}
@@ -200,13 +199,13 @@ function TextBoard({ entriesCollection, currentEntry }: { entriesCollection: Ent
 
 function Keyboard({ }) {
   return (
-    <div className='w-full flex justify-center items-center'>
-      <div className='flex flex-col gap-10 items-center'>
+    <div className='w-full max-w-screen flex justify-center items-center'>
+      <div className='flex flex-col gap-5 items-center text-xs'>
         <div>
           {
             firstLine.map(item => {
               return (
-                <span className='mx-1 cursor-pointer text-white p-4 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
+                <span className='mx-0.5 cursor-pointer text-white p-2 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
               )
             })
           }
@@ -216,7 +215,7 @@ function Keyboard({ }) {
           {
             secondLine.map(item => {
               return (
-                <span className='mx-1 cursor-pointer text-white p-4 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
+                <span className='mx-0.5 cursor-pointer text-white p-2 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
               )
             })
           }
@@ -225,7 +224,7 @@ function Keyboard({ }) {
           {
             thirdLine.map(item => {
               return (
-                <span className='mx-1 cursor-pointer text-white p-4 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
+                <span className='mx-0.5 cursor-pointer text-white p-2 bg-graylight rounded-lg'>{item.toUpperCase()}</span>
               )
             })
           }
