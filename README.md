@@ -1,4 +1,4 @@
-# WORDLE
+# WORDLE [Live Demo](https://wordle-gilt-mu.vercel.app/)
 
 A wordle clone using plain React.
 
@@ -8,3 +8,5 @@ A wordle clone using plain React.
 3. pnpm
 4. Tailwind
 5. Typescript
+6. Vercel
+
